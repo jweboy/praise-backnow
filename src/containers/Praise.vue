@@ -2,19 +2,27 @@
   <div class="p-praise">
     <x-header :left-options="{showBack: false}">好评有礼</x-header>
     <Swiper :list="list" auto loop ></Swiper>
+    <div class="banner">
+      <router-link to="/activityrule">
+      <x-button type="primary" mini class="rule-btn">活动规则</x-button>
+      </router-link>
+    </div>
     <p class="step">step1</p>
     <group>
       <x-input title="淘宝订单号" type="text" placeholder="请输入淘宝订单号"></x-input>
     </group>
     <p class="step" style="margin-top: 20px">step2</p>
     <grid :rows="3">
-      <grid-item v-for="item in list1" :key="item.id">
+      <grid-item v-for="item in list1" :key="item.id" style="text-align:center">
         <img :src="item.img" class="item-img">
-        <x-button>{{item.text}}</x-button>
+        <x-button type="primary" mini>
+          <!-- <x-icon type="ios-plus-empty" class="item-icon"></x-icon> -->
+          +&nbsp;{{item.text}}
+        </x-button>
       </grid-item>
     </grid>
     <div class="submit">
-      <x-button type="primary" @click.native="showMsg">立即提交,好评有礼</x-button>
+      <x-button type="primary" @click.native="showMsg" class="submit-btn">立即提交,好评有礼</x-button>
       <router-link to="/praiserecord">
         <p style="margin-top: 10px">我的好评记录</p>
       </router-link>
@@ -94,7 +102,7 @@
 <style lang="less">
     .p-praise{
       .step{
-        padding: 10px 5px;
+        padding:5px;
         background: #fff;
       }
       .item-img{
@@ -103,6 +111,27 @@
       .submit{
         margin:10px;
         text-align:center;
+        position: fixed;
+        width: 100vw;
+        bottom: 0;
+      }
+      .banner{
+        position: absolute;
+        top: 185px;
+        right:0;
+        overflow: hidden;
+      }
+      .rule-btn{
+        float: right;
+      }
+      .item-icon {
+        display: inline-block;
+        fill: #fff;
+      }
+      .submit-btn{
+        width: 60%;
+        font-size: 16px;
+        letter-spacing: 2px
       }
     }
 </style>
